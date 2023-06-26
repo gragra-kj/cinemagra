@@ -1,0 +1,258 @@
+.form-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    padding-bottom: 60px;
+    background-image: url('images/backregister.jpg');
+}
+
+.form-container form {
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgb(10, 10, 10);
+    background: #4c7878;
+    text-align: center;
+    width: 500px;
+}
+
+.form-container form h3 {
+    font-size: 30px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.form-container form input {
+    width: 90%;
+    padding: 10px 15px;
+    font-size: 17px;
+    margin: 8px 0;
+    background: #eee;
+}
+
+.form-container form .btn {
+    background: #9ab5b5;
+    color: #e85673;
+    font-size: 20px;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+.form-container form .btn:hover {
+    background: #c47484;
+    color: aliceblue;
+}
+
+.form-container form p {
+    margin-top: 10px;
+    font-size: 20px;
+    color: #333;
+}
+
+.form-container form p a {
+    color: #d904a7;
+}
+
+.form-container form .error-msg {
+    margin: 10px 0;
+    display: block;
+    background: #d904a7;
+    color: aliceblue;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.content3 {
+    background: #fff;
+    padding: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    width: 33.3%;
+}
+
+.movie-image-list {
+    display: block;
+    float: left;
+    margin: 0% 0 0% 1.6%;
+}
+
+.movie-image-list h2 {
+    color: #fcac03;
+    font-size: 2em;
+    margin-bottom: 5%;
+}
+
+.exta-wrap {
+    overflow: hidden;
+}
+
+.data {
+    color: #989898;
+    margin-bottom: 1px;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #1344b0;
+}
+
+.text-top {
+    padding-top: 6px;
+    display: inline-block;
+    font-size: 13px;
+    line-height: 1.8em;
+    color: #888;
+}
+
+.listimg {
+    display: block;
+    float: left;
+}
+
+.listimg1 {
+    width: 47%;
+    float: left;
+    margin-right: 6%;
+}
+
+.listimg1 img,
+.listimg2 img {
+    margin-bottom: 3%;
+}
+
+.listimg2 {
+    width: 47%;
+    float: left;
+    margin-right: 0;
+}
+
+.link {
+    font-size: 12px;
+    line-height: 20px;
+    color: #313131;
+    font-weight: bold;
+    text-decoration: underline;
+    line-height: 1.8em;
+}
+
+.link:hover {
+    text-decoration: none;
+    color: #313131;
+}
+
+.link2 {
+    font-size: 14px;
+    line-height: 20px;
+    color: #fcac03;
+    font-weight: bold;
+    background: url(../images/s-icon.png) 55px 6px no-repeat;
+    padding-right: 15px;
+    display: inline-block;
+    margin-bottom: 10%;
+}
+
+.link2:hover {
+    text-decoration: underline;
+    color: #fcac03;
+}
+
+.text {
+    display: block;
+    float: left;
+    margin: 0% 0 7% 3.6%;
+}
+
+.listview_1_of_3:first-child {
+    margin-left: 0;
+}
+
+.images_1_of_3 {
+    width: 29.2%;
+    padding: 1.5%;
+}
+
+.listimg_1_of_2 {
+    width: 28.2%;
+}
+
+.list_1_of_2 {
+    width: 68.2%;
+}
+
+.images_1_of_3 img {
+    max-width: 100%;
+    display: block;
+}
+
+.list_1_of_2 h3 {
+    color: #c94848;
+    margin-bottom: 0.2em;
+    margin-top: 0;
+    font-size: 1em;
+    font-family: MuseoSlab300, "lucida sans unicode", "lucida grande", "Trebuchet MS", verdana, arial, helvetica, helve, sans-serif;
+    font-weight: normal;
+    letter-spacing: -1px;
+}
+
+.list_1_of_2 p {
+    font-size: 0.8125em;
+    color: #333;
+    line-height: 1.5em;
+    font-family: verdana, arial, helvetica, helve, sans-serif;
+    padding: 0;
+}
+
+@media only screen and (max-width: 1024px) {
+    .wrap {
+        width: 90%;
+    }
+}
+
+
+/*  GO FULL WIDTH AT LESS THAN 640 PIXELS */
+
+@media only screen and (max-width: 640px) {
+    .wrap {
+        width: 95%;
+    }
+    .listview_1_of_3 {
+        margin: 2% 0 2% 0%;
+    }
+    .text {
+        margin: 0;
+    }
+    .images_1_of_3 {
+        width: 94%;
+        padding: 3%;
+    }
+    .listimg_1_of_2 {
+        width: 100%;
+    }
+    .list_1_of_2 {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .wrap {
+        width: 95%;
+    }
+    .listview_1_of_3 {
+        margin: 2% 0 2% 0%;
+    }
+    .text {
+        margin: 0;
+    }
+    .images_1_of_3 {
+        width: 92%;
+        padding: 4%;
+    }
+    .listimg_1_of_2 {
+        width: 100%;
+    }
+    .list_1_of_2 {
+        width: 100%;
+    }
+}
