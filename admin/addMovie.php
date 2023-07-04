@@ -21,60 +21,8 @@ if (isset($_POST['add_product'])) {
 };
 if (isset($_GET['deleteMovie'])) {
 	$id = $_GET['deleteMovie'];
-	mysqli_query($conn, "DELETE FROM movies WHERE id=$id");
+	mysqli_query($conn, "DELETE FROM movies WHERE movie_id=$id");
 	header('Location:addMovie.php');
-}
-?>
-<?php
-
-if (isset($_GET['editMovies'])) { //check if edit button was pressed and display the edit form
-
-	include "db2.php";
-	$movieId = $_GET['editMovies'];
-	$query = "SELECT * FROM movies WHERE movie_id = ?";
-	$stmt = $conn->prepare($query);
-	$stmt->bind_param("s", $movieId);
-	$stmt->execute();
-	$result = $stmt->get_result();
-	$row = mysqli_fetch_assoc($result);
-
-
-	echo '<h1 style="text-align: center; margin-bottom: 30px;">Update Movie</h1>
-        <div style="max-width: 50%; margin: auto; color: white;">
-            <form action="addMovie.php" method="POST" enctype="multipart/form-data">
-            <input type="text" style="display: none;" name="movie_idH" value="' . $row['movie_id'] . '">
-                <div class="form-group">
-                    <label for="exampleFormControlSelect1">Update movie title:</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" name="movieName"
-                        value="' . $row['movieName'] . '" required>
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlSelect1">Input a description:</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                     name="movieDescription" required>' . $row['trailers'] . '</textarea>
-                </div>
-				<div class="form-group">
-                    <label for="exampleFormControlSelect1">Input a description:</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                     name="movieDescription" required>' . $row['genre'] . '</textarea>
-                </div>
-				<div class="form-group">
-                    <label for="exampleFormControlSelect1">Input a description:</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                     name="movieDescription" required>' . $row['movieDescription'] . '</textarea>
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlFile1">Input Image of Movie:</label><br>
-                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                As you pressed edit, you have to input the image again!
-                            </div>
-                    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="movieImage" required>
-                </div>
-                <div style="text-align: left;">
-                    <button type="submit" class="btn btn-warning btn-lg btn-block" name="submit-movieUP">Update Movie</button>
-                </div>
-            </form>
-        </div>';
 }
 ?>
 
@@ -232,6 +180,61 @@ if (isset($_GET['editMovies'])) { //check if edit button was pressed and display
 		}
 	}
 	?>
+	<?php
+
+if (isset($_GET['editMovies'])) { //check if edit button was pressed and display the edit form
+
+	include "db2.php";
+	$movieId = $_GET['editMovies'];
+	$query = "SELECT * FROM movies WHERE movie_id = ?";
+	$stmt = $conn->prepare($query);
+	$stmt->bind_param("s", $movieId);
+	$stmt->execute();
+	$result = $stmt->get_result();
+	$row = mysqli_fetch_assoc($result);
+
+
+	echo '<h1 style="text-align: center; margin-bottom: 30px;">Update Movie</h1>
+        <div style="max-width: 50%; margin: auto; color: white;">
+            <form action="addMovie.php" method="POST" enctype="multipart/form-data">
+            <input type="text" style="display: none;" name="movie_idH" value="' . $row['movie_id'] . '">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Update movie title:</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" name="movieName"
+                        value="' . $row['movieName'] . '" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Input a description:</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                     name="movieDescription" required>' . $row['trailers'] . '</textarea>
+                </div>
+				<div class="form-group">
+                    <label for="exampleFormControlSelect1">Input a description:</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                     name="movieDescription" required>' . $row['genre'] . '</textarea>
+                </div>
+				<div class="form-group">
+                    <label for="exampleFormControlSelect1">Input a description:</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                     name="movieDescription" required>' . $row['movieDescription'] . '</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Input Image of Movie:</label><br>
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                As you pressed edit, you have to input the image again!
+                            </div>
+                    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="movieImage" required>
+                </div>
+                <div style="text-align: left;">
+                    <button type="submit" class="btn btn-warning btn-lg btn-block" name="submit-movieUP">Update Movie</button>
+                </div>
+            </form>
+        </div>'
+		;
+
+}
+?>
+
 	<div class="content" style="background-color:#333333">
 		<div class="content-left">
 			<h2 style="color: aquamarine;">Now Showing</h2>
@@ -254,7 +257,7 @@ if (isset($_GET['editMovies'])) { //check if edit button was pressed and display
 							<p class="card-text">Genre: <strong><?php echo $row['genre']; ?></strong></p>
 							<p class="card-text">Trailers: <strong><?php echo $row['trailers']; ?></strong></p>
 							<a href="addMovie.php?editMovies=<? echo $row['movie_id']; ?>" class="btn btn-info">Edit</a>
-							<a href="../updates/managemovie.php?deleteMovie=<? echo $row['movie_id']; ?>" class="btn btn-danger">Delete</a>
+							<a href="addMovie.php?deleteMovie=<? echo $row['movie_id']; ?>" class="btn btn-danger">Delete</a>
 							<?php
 							if (isset($_SESSION['userId'])) {
 								echo '<a href="booking.php?scheduleID=' . $row['schedule_id'] . '" class="btn btn-primary">Book now</a>';
@@ -280,6 +283,7 @@ if (isset($_GET['editMovies'])) { //check if edit button was pressed and display
 						<input type="text" name="moviename" id="moviename" placeholder="Enter Movie Name">
 						<select name="moviegenre" id="genre">
 							<option name="moviegenre" id="genre" value="Action">Action</option>
+							<option name="moviegenre" id="genre" value="Action">Romance</option>
 							<option name="moviegenre" id="genre" value="Adventure">Adventure</option>
 							<option name="moviegenre" id="genre" value="Comedy">Comedy</option>
 							<option name="moviegenre" id="genre" value="Animation">Animation</option>
@@ -289,7 +293,7 @@ if (isset($_GET['editMovies'])) { //check if edit button was pressed and display
 						<textarea name="description" id="desc" cols="30" rows="10" placeholder="Description"></textarea>
 						<input style="padding: 10px;max-width:100px" type="file" name="image" id="img" accept="image/jpg,
 			 image/png, image/jpeg">
-						<input style="font-size: larger;background-color: #c2fbb8;font-family: cursive;font-weight: bold;" class="moviegenre" type="submit" name="add_product" value="add product">
+						<input style="font-size: larger;background-color: #c2fbb8;font-family: cursive;font-weight: bold;" class="moviegenre" type="submit" name="add_product" value="Add Movie">
 					</form>
 					<div class="wrapper">
 						<button class="btn btn-default" onclick="document.location.href='adminprofile.php'">

@@ -10,11 +10,9 @@ include "db.php";
     <nav>
     <ul>
             <li><a href="index.php">Home</a></li>
-            <li><a href="room.php">Rooms</a></li>
+            <li><a href="room.php">Theatre</a></li>
             <li><a href="contact.php">Contact Us</a></li>
-            
-        </ul>
-        <?php
+            <?php
         if(isset($_SESSION['userId'])){
             echo '<span style="font-weight: bold;">'. $_SESSION['userRole'] .' | '. $_SESSION['name'] . '</span> &nbsp;
 					<form class="form-inline my-2 my-lg-0" action="connect/logout.inc.php" method="post">
@@ -25,9 +23,12 @@ include "db.php";
             display: inline-block;
             margin-left: 60px;text-decoration: none;
             color: white;
-            font-size: 15px;";><a href="login.php">Login</a></li> ';
+            font-size: 20px;";><a href="login.php">Login</a></li> ';
         }
         ?>
-        
+
+        </ul>
+
+
     </nav>
 </div>

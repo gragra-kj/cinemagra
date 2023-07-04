@@ -48,7 +48,7 @@
         .card-mb-3{
           align-items: center;
 
-          
+
         }
         .card-img-top{
           max-width:80%;
@@ -58,13 +58,13 @@
     </style>
 </head>
 <body>
-<?php 
+<?php
 
 include 'db.php';
 require 'header.php';
 ?>
         <div class="jumbotron" style="background-color: #333333; margin-top: -30px; margin-bottom: -80px; align-items:center;">
-      <h1 class="title" style="text-align: center;">Opened Rooms</h1>
+      <h1 class="title" style="text-align: center;">Opened cinema Halls</h1>
       <div class="jumbotron" style="background-color: #333333; margin-top: -30px;">
 
         <?php
@@ -118,6 +118,6 @@ require 'header.php';
 
       </div>
     </div>
-  </div>   
+  </div>
 </body>
 </html>

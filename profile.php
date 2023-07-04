@@ -51,6 +51,7 @@
         <th><strong>ROOM</strong></th>
         <th><strong>SEAT</strong></th>
         <th><strong>BOOKED DATE</strong></th>
+        <th><strong>COST</strong></th>
         <th><strong>PAY NOW</strong></th>
       </tr>
 
@@ -62,12 +63,13 @@
       include "db.php";
 
       //Join 5 tables to get the data we want based on user's id
-      $query = " SELECT schedule.startDate, movies.movieName, rooms.roomName, booking.booked_date, reservedseats.seatName
-            FROM users 
+      $query = " SELECT schedule.startDate, movies.movieName, rooms.roomName, booking.booked_date, reservedseats.seatName,seats.cost
+            FROM users
             INNER JOIN booking ON users.userID = booking.user_id
             INNER JOIN schedule ON schedule.schedule_id = booking.schedule_id
             INNER JOIN movies ON schedule.movie_id = movies.movie_id
             INNER JOIN rooms ON schedule.room_id = rooms.room_id
+            INNER JOIN seats ON users.userID = seats.user_id
             INNER JOIN reservedseats ON reservedseats.booking_id = booking.booking_id
             WHERE booking.user_id = '$userId'";
 
@@ -84,15 +86,11 @@
             <td><?php echo $row['roomName']; ?></td>
             <td><?php echo $row['seatName']; ?></td>
             <td><?php echo $row['booked_date']; ?></td>
+            <td><?php echo $row['cost']; ?></td>
+
             <td>
-              <script async src="https://js.stripe.com/v3/buy-button.js">
-              </script>
-
-              <stripe-buy-button buy-button-id="buy_btn_1N5nNmDMMZh8YOx3Vl6gq5oF" publishable-key="pk_test_51N5kHrDMMZh8YOx3XQJrZg0ZSIeNuPYyXivTh6q7kYXDUKQ3HVgaOjbNNVuYSsOPOfSXSxiaoYQ6BagtyhZNdcOz00GcyROiGE">
-              </stripe-buy-button>
-              <button class="btn btn-success" onclick="window.location.href='http://localhost:9090/online-cinema-booking/mpesa/lipa.php'">Mpesa</button>
+              <button class="btn btn-success" onclick="payNow('<?php echo $row['movieName']; ?>')">Pay</button>
             </td>
-
           </tr>
 
       <?php
@@ -104,6 +102,19 @@
 
       </tr>
     </table>
+    <script>
+  function payNow(movieName) {
+    if (confirm('Are you sure you want to pay for ' + movieName + '?')) {
+      // Perform the payment processing and deletion operation here
+
+      // You can make an AJAX request to your server to process the payment
+      // After the payment is successfully processed, delete the movie details
+
+      // Redirect to the receipt page after payment
+      window.location.href = 'http://localhost/cinema/receipt.php';
+    }
+  }
+</script>
   </div>
 </body>
 

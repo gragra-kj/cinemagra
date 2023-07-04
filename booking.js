@@ -38,6 +38,11 @@ function updateselectedCount() {
     total.innerText = totalcost;
     document.getElementById('hidden-total-cost').value = totalcost;
     setScheduledata(scheduleselect.selectedIndex, scheduleselect.value);
+    const soldSeats = document.querySelectorAll('.rows .seats.sold');
+    soldSeats.forEach(seat => {
+        seat.classList.remove('selected');
+        seat.disabled = true;
+    });
 
 }
 
@@ -53,6 +58,7 @@ container.addEventListener('click',
         if (e.target.classList.contains('seats') && !e.target.classList.contains('sold')) {
             e.target.classList.toggle('selected');
             updateselectedCount();
+
 
         }
     })
@@ -73,7 +79,7 @@ $(document).ready(function () {
         xmlhttp.send();
         $("#inputGroupSelectDate").html(xmlhttp.responseText); //set date values on date field
 
-        var scheduleDate = $("#inputGroupSelectDate").val(); //get date value 
+        var scheduleDate = $("#inputGroupSelectDate").val(); //get date value
         xmlhttp = new XMLHttpRequest();
         xmlhttp.open("GET", "http://localhost/cinema-booking/requests/selectTime.php?movie=" + movieName + "&room=" + roomName + "&date=" + scheduleDate, false);
         xmlhttp.send();
@@ -97,7 +103,7 @@ $(document).ready(function () {
         xmlhttp.send();
         $("#inputGroupSelectDate").html(xmlhttp.responseText); //set the new date value on value field
 
-        var scheduleDate = $("#inputGroupSelectDate").val(); //get the changed date value 
+        var scheduleDate = $("#inputGroupSelectDate").val(); //get the changed date value
         xmlhttp = new XMLHttpRequest();
         xmlhttp.open("GET", "http://localhost/cinema-booking/requests/selectTime.php?movie=" + movieName + "&room=" + roomName + "&date=" + scheduleDate, false);
         xmlhttp.send();
@@ -149,7 +155,7 @@ $(document).ready(function () {
         if (this.selected) {
 
             var roomName = $("#inputGroupSelectRoom").val(); //get room value
-            var scheduleDate = $("#inputGroupSelectDate").val(); //get date value 
+            var scheduleDate = $("#inputGroupSelectDate").val(); //get date value
             var scheduleTime = $("#inputGroupSelectTime").val(); //get time value
             xmlhttp = new XMLHttpRequest();
             xmlhttp.open("GET", "http://localhost/cinema-booking/requests/selectSeats.php?room=" + roomName + "&date=" + scheduleDate + "&time=" + scheduleTime, false);

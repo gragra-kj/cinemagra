@@ -6,9 +6,9 @@ if (isset($_POST['submit'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $password = md5($_POST['password']);
 
-    $select = "SELECT * FROM users WHERE userEmail='" . $email . "' && userPassw= '" . $password . "'";
+    $select = "SELECT * FROM users WHERE userEmail='" . $email . "' AND userPassw= '" . $password . "'";
     $result = mysqli_query($conn, $select);
-    $row = mysqli_fetch_array($result);
+    $row = mysqli_fetch_assoc($result);
 
     if ($row) {
         $_SESSION['userId'] = $row['userID'];
@@ -19,10 +19,12 @@ if (isset($_POST['submit'])) {
             header('Location: home.php');
         } else if ($row["role"] == "Administrator") {
             header('Location: admin/adminprofile.php');
-        }else {
-            $error[]="Incorrect password or email";
+        } else {
+            $error[] = "Incorrect password or email";
         }
-    } 
+    } else {
+        $error[] = "Incorrect password or email";
+    }
 }
 ?>
 
@@ -39,10 +41,11 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
-<div class="form-container">
+<div class="form-container" style="height: 100vh; background-image: url('assets/images/backregister.jpg');">
     <form action="" method="post">
         <h3>Login</h3>
         <?php
+        //error message if user enters incorrect password or email
         if (isset($error)) {
             foreach ($error as $error) {
                 echo '<span class="error-msg" style="color:blue"; >' . $error . '</span>';

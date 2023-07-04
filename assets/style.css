@@ -1,14 +1,17 @@
 .form-container {
-    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    height: fit-content;
     padding: 20px;
     padding-bottom: 60px;
-    background-image: url('images/backregister.jpg');
+    background-color: #989898;
+
+   /* background-image: url('images/backregister.jpg');*/
 }
 
 .form-container form {
+    display: flexbox;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 5px 10px rgb(10, 10, 10);
@@ -56,12 +59,12 @@
 }
 
 .form-container form .error-msg {
-    margin: 10px 0;
+    margin: 0px 0;
     display: block;
-    background: #d904a7;
+    background: #333333;
     color: aliceblue;
     border-radius: 5px;
-    font-size: 20px;
+    font-size: 10px;
 }
 
 .content3 {

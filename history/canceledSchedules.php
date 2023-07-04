@@ -12,7 +12,7 @@ include "../db.php";
     <title>Document</title>
 </head>
 
-<body style="background-color:brown">
+<body style="background-color:#122121">
     <?php
     require "../admin/header.php"
     ?>

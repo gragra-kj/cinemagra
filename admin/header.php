@@ -15,8 +15,6 @@ session_start();
 					<button class="dropbtn">Manage
 						<i class="fa fa-caret-down"></i>
 					</button>
-
-
 					<div class="dropdown-content">
 						<a class="dropdown-item" href="adduser.php">Add User</a>
 						<a class="dropdown-item" href="addMovie.php">Create Movies</a>
@@ -25,6 +23,19 @@ session_start();
 						<a class="dropdown-item" href="upcomingmovies.php">Upcoming movies</a>
 						<a class="dropdown-item" href="../schedules.php">Schedules</a>
 						<a href="bookdetails.php" class="dropdown-item">Bookings</a>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="dropdown">
+					<button class="dropbtn">Reports
+						<i class="fa fa-caret-down"></i>
+					</button>
+					<div class="dropdown-content">
+						<a class="dropdown-item" href="reports/fusers.php">Frequent User</a>
+						<a class="dropdown-item" href="reports/fmovie.php">Favorite Movie</a>
+						<a class="dropdown-item" href="reports/timeslot.php">Favorite Timeslot</a>
+						<a class="dropdown-item" href="reports/day.php">Favorite Day</a>
 					</div>
 				</div>
 			</li>
@@ -43,7 +54,7 @@ session_start();
 				<?php
 				if (isset($_SESSION['userId'])) {
 					echo '<span style="font-weight: bold;">' . $_SESSION['userRole'] . ' | ' . $_SESSION['name'] . '</span> &nbsp;
-					<form class="form-inline my-2 my-lg-0" action="connect/logout.inc.php" method="post">
+					<form class="form-inline my-2 my-lg-0" action="../connect/logout.inc.php" method="post">
 							<button class="button1" type="submit">Log out</button>
 							</form>';
 				}

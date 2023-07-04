@@ -7,24 +7,28 @@
 .container {
     width: 100%;
     min-height: 100vh;
-    background-color: #333333;
+    background-color: #e0b4b4;
     background-size: cover;
 }
 
 .nav-bar {
-    height: 12%;
+    height: 25%;
     display: flex;
     width: 100%;
     align-items: center;
     box-sizing: content-box;
-    background-color: #306b6b;
+    background-color: #5e160e;
     margin-left: 0;
+    padding: 20px 20px 20px 0;
 }
 
 .logo {
-    width: 50px;
+    width: 70px;
     cursor: pointer;
-    color: black;
+    color: #031427;
+    font-size: 25px;
+    font-style: oblique 40deg;
+    font-family: Courier, monospace;
 }
 
 nav {
@@ -41,7 +45,7 @@ nav ul li {
 nav ul li a {
     text-decoration: none;
     color: #fff;
-    font-size: 13px;
+    font-size: 17px;
 }
 
 .content {
@@ -91,7 +95,7 @@ nav ul li a {
 }
 
 .card {
-    background-color: #fff;
+    background-color:#798a8a;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;

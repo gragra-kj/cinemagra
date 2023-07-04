@@ -52,10 +52,10 @@ if (isset($_POST['book-ticket'])) {
                 // Get the booking ID
                 $bookingID = $conn->insert_id;
                 // Insert the reserved seat into the database
-                $insertseats = "INSERT INTO seats (seatName, roomName, startDate, startHours, movieName, cost) VALUES (?, ?, ?, ?, ?, ?)";
+                $insertseats = "INSERT INTO seats (seatName, roomName, startDate, startHours, movieName, cost,user_id) VALUES (?, ?, ?, ?, ?, ?,?)";
                 $stmt = $conn->prepare($insertseats);
 
-                $stmt->bind_param("sssssd", $seatsString, $roomName, $startDate, $startHours, $movieName, $totalCost);
+                $stmt->bind_param("sssssdd", $seatsString, $roomName, $startDate, $startHours, $movieName, $totalCost, $userID);
                 $stmt->execute();
 
                 if ($stmt->affected_rows > 0) {
@@ -269,174 +269,153 @@ if (isset($_POST['book-ticket'])) {
                             <div class="screencontainer">
                                 <div class="screen"></div>
                                 <div class="rows">
-                                    <div class="seats" id="seat">A1
-                                        <input type="checkbox" value="A1" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A2
-                                        <input type="checkbox" value="A2" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A3
-                                        <input type="checkbox" value="A3" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A4
-                                        <input type="checkbox" value="A4" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats sold" id="seat">A5
-                                        <input type="checkbox" value="A5" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A6
-                                        <input type="checkbox" value="A6" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A7
-                                        <input type="checkbox" value="A7" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A8
-                                        <input type="checkbox" value="A8" id="PrcA" name="seats[]" />
-                                    </div>
-                                </div>
-                                <div class="rows">
-                                    <div class="seats" id="seat">A9
-                                        <input type="checkbox" value="A9" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A10
-                                        <input type="checkbox" value="A10" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats sold" id="seat">A11
-                                        <input type="checkbox" value="A11" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A12
-                                        <input type="checkbox" value="A12" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A13
-                                        <input type="checkbox" value="A13" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A14
-                                        <input type="checkbox" value="A14" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A15
-                                        <input type="checkbox" value="A15" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A16
-                                        <input type="checkbox" value="A16" id="PrcA" name="seats[]" />
-                                    </div>
-                                </div>
-                                <div class="rows">
-                                    <div class="seats" id="seat">A17
-                                        <input type="checkbox" value="A17" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A18
-                                        <input type="checkbox" value="A18" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A19
-                                        <input type="checkbox" value="A19" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A20
-                                        <input type="checkbox" value="A20" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A21
-                                        <input type="checkbox" value="A21" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A22
-                                        <input type="checkbox" value="A22" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A23
-                                        <input type="checkbox" value="A23" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A24
-                                        <input type="checkbox" value="A24" id="PrcA" name="seats[]" />
-                                    </div>
-                                </div>
-                                <div class="rows">
-                                    <div class="seats" id="seat">A25
-                                        <input type="checkbox" value="A25" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A26
-                                        <input type="checkbox" value="A26" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A27
-                                        <input type="checkbox" value="A27" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A28
-                                        <input type="checkbox" value="A28" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A29
-                                        <input type="checkbox" value="A29" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats sold" id="seat">A30
-                                        <input type="checkbox" value="A30" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A31
-                                        <input type="checkbox" value="A31" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A32
-                                        <input type="checkbox" value="A32" id="PrcA" name="seats[]" />
-                                    </div>
-                                </div>
-                                <div class="rows">
-                                    <div class="seats" id="seat">A33
-                                        <input type="checkbox" value="A33" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A34
-                                        <input type="checkbox" value="A34" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A35
-                                        <input type="checkbox" value="A35" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A36
-                                        <input type="checkbox" value="A36" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats sold" id="seat">A37
-                                        <input type="checkbox" value="A37" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats sold" id="seat">A38
-                                        <input type="checkbox" value="A38" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A39
-                                        <input type="checkbox" value="A39" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A40
-                                        <input type="checkbox" value="A40" id="PrcA" name="seats[]" />
-                                    </div>
-                                </div>
-                                <div class="rows">
-                                    <div class="seats" id="seat">A41
-                                        <input type="checkbox" value="A41" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A42
-                                        <input type="checkbox" value="A42" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A43
-                                        <input type="checkbox" value="A43" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A44
-                                        <input type="checkbox" value="A44" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats sold" id="seat">A45
-                                        <input type="checkbox" value="A45" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats sold" id="seat">A46
-                                        <input type="checkbox" value="A46" id="PrcA" name="seats=[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A47
-                                        <input type="checkbox" value="A47" id="PrcA" name="seats[]" />
-                                    </div>
-                                    <div class="seats" id="seat">A48
-                                        <input type="checkbox" value="A48" id="PrcA" name="seats[]" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="selectedSeat"></div>
+                                    <?php
+                                    $scheduleid = $_GET['scheduleID'];
+                                    // Assuming you have the number of seats in a room stored in a variable called $numSeats
+                                    /*$query="SELECT seats FROM rooms WHERE roomName='$roomName'";
+                                    $result=$conn->query($query);
+                                    if ($result->num_rows > 0) {
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            $numSeats = $row['seats'];
+                                            echo '<div class="rows">';
 
-                        </div>
+                                    for ($i = 1; $i <= $numSeats; $i++) {
 
-                    </div>
-                </div>
-                <p class="text">You have selected <span id="count">0</span> seats for ksh. <span id="total">0</span></p>
-                <input type="hidden" id="hidden-total-cost" name="totalCost">
-                <div class="form-group">
-                    <button type="submit" name="book-ticket">Book Ticket</button>
-                </div>
-                <script src="booking.js"></script>
+                                        $seatName = 'A' . $i;
+                                        $checkboxId = 'PrcA' . $i;
+                                        $columnNumber = ($i - 1) % 8 + 1;
+
+                                        // Create a new row at the start of each row
+                                        if ($columnNumber == 1) {
+                                            echo '<div class="seats" id="seat">';
+                                        }
+
+
+                                        echo '<div class="seats">' . $seatName . '
+                                        <input type="checkbox" value="' . $seatName . '" id="' . $checkboxId . '" name="seats[]" />
+                                    </div>';
+
+                                // Close the row at the end of each column or when it reaches the last seat
+                                if ($columnNumber == 8 || $i == $numSeats) {
+                                    echo '</div>'; // Close seats row div
+
+
+                                    }
+                                    echo '</div>';
+
+                                }
+                            }
+                        }
+                        ?>*/
+                                    $query = "SELECT seats FROM rooms WHERE roomName = '$roomName'";
+                                    $result = $conn->query($query);
+
+                                    if ($result->num_rows > 0) {
+                                        $row = $result->fetch_assoc();
+                                        $numSeats = $row['seats'];
+
+                                        // Initialize a variable to track the seat display
+                                        $seatDisplay = '';
+
+                                        $seatDisplay .= '<div class="seats-row">';
+
+                                        // Print the seat names A1 to A8
+                                        for ($i = 1; $i <= 8; $i++) {
+                                            $seatName = 'A' . $i;
+                                            $checkboxId = 'PrcA' . $i;
+                                            $isBooked = false; // Default value for booked seats
+
+                                            // Check if the seat is booked in the completedbooking table
+                                            $bookingQuery = "SELECT * FROM completed_bookings WHERE seatName = '$seatName' AND roomName = '$roomName'";
+                                            $bookingResult = $conn->query($bookingQuery);
+
+                                            if ($bookingResult->num_rows > 0) {
+                                                $isBooked = true;
+                                            }
+
+                                            // Add CSS classes for booked seats
+                                            $seatClass = $isBooked ? 'seat-booked' : 'seat-available';
+
+                                            $seatDisplay .= '<div class="seats ' . $seatClass . '">' . $seatName . '
+                                                   <input type="checkbox" value="' . $seatName . '" id="' . $checkboxId . '" name="seats[]" ' . ($isBooked ? 'disabled' : '') . ' />
+                                                </div>';
+                                        }
+
+                                        $seatDisplay .= '</div>';
+
+                                        // Start a new row for the remaining seats
+                                        $seatDisplay .= '<div class="seats-row">';
+
+                                        // Loop through the remaining seats
+                                        for ($i = 9; $i <= $numSeats; $i++) {
+                                            $seatName = 'A' . $i;
+                                            $checkboxId = 'PrcA' . $i;
+                                            $columnNumber = ($i - 1) % 8 + 1;
+                                            $isBooked = false; // Default value for booked seats
+
+                                            // Check if the seat is booked in the completedbooking table
+                                            $bookingQuery = "SELECT * FROM completed_bookings WHERE seatName = '$seatName' AND roomName = '$roomName'";
+                                            $bookingResult = $conn->query($bookingQuery);
+
+                                            if ($bookingResult->num_rows > 0) {
+                                                $isBooked = true;
+                                            }
+
+                                            // Check if it's the first seat in a new row
+                                            if ($columnNumber == 1) {
+                                                // Close the current row
+                                                $seatDisplay .= '</div>';
+
+                                                // Start a new row
+                                                $seatDisplay .= '<div class="seats-row">';
+                                            }
+
+                                            // Add CSS classes for booked seats
+                                            $seatClass = $isBooked ? 'seat-booked' : 'seat-available';
+
+                                            // Print the seat
+                                            $seatDisplay .= '<div class="seats ' . $seatClass . '">' . $seatName . '
+                                                    <input type="checkbox" value="' . $seatName . '" id="' . $checkboxId . '" name="seats[]" ' . ($isBooked ? 'disabled' : '') . ' />
+                                                </div>';
+                                        }
+
+                                        // Close the last row
+                                        $seatDisplay .= '</div>';
+
+                                        // Display the selected seats
+                                        if (isset($_POST['seats'])) {
+                                            $selectedSeats = $_POST['seats'];
+                                            $seatDisplay .= '<div id="selectedSeat">';
+                                            $seatDisplay .= '<h3>Selected Seats:</h3>';
+                                            $seatDisplay .= '<ul>';
+                                            foreach ($selectedSeats as $seat) {
+                                                $seatDisplay .= '<li>' . $seat . '</li>';
+                                            }
+                                            $seatDisplay .= '</ul>';
+                                            $seatDisplay .= '</div>';
+                                        }
+
+                                        // Echo the seat display only once
+                                        echo $seatDisplay;
+                                    }
+
+                                    ?>
+                                </div>
+                                <p class="text">You have selected <span id="count">0</span> seats for ksh. <span id="total">0</span></p>
+                                <input type="hidden" id="hidden-total-cost" name="totalCost">
+                                <div class="form-group">
+                                    <button type="submit" name="book-ticket" onclick="checkSeats()">Book Ticket</button>
+                                </div>
+                                <script src="booking.js"></script>
+                                <script>
+                                    function checkSeats() {
+                                        var checkboxes = document.querySelectorAll('input[name="seats[]"]:checked');
+                                        if (checkboxes.length === 0) {
+                                            alert("Please select at least one seat before booking.");
+                                            return false;
+                                        }
+                                    }
+                                </script>
         </form>
 
     </div>

@@ -11,7 +11,7 @@
     <title>Cancelled Booking</title>
 </head>
 
-<body style="background-color: #ff6600;">
+<body style="background-color: 333333;">
     <?php require "../admin/header.php" ?>
     <div class="jumbotron" style="background-color: #333333; margin-bottom: -45px;">
         <h1 class="title">Canceled Bookings</h1>

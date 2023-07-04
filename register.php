@@ -11,29 +11,44 @@ if (isset($_POST['submit'])) {
     $phone = mysqli_real_escape_string($conn, $_POST['phone']);
     //md5 used for encryption of password
     $password = md5($_POST['password']);
-    if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter a password.";     
-    } elseif(strlen(trim($_POST["password"])) < 8){
-        $password_err = "Password must have atleast 8 characters.";
-    } else{
-        $password = trim($_POST["password"]);
-    }
-    $cpassword = md5($_POST['cpassword']);
-    $select = "SELECT * FROM users WHERE userEmail='$email' && userPassw= '$password'";
-    $result = mysqli_query($conn, $select);
-    if (mysqli_num_rows($result) > 0) {
-        $error[] = "User already exist";
-    } else {
+    // Validate password strength
+    $uppercase = preg_match('@[A-Z]@', $password);
+    $lowercase = preg_match('@[a-z]@', $password);
+    $number    = preg_match('@[0-9]@', $password);
+    $specialChars = preg_match('@[^\w]@', $password);
 
-        if ($password != $cpassword) {
-            $error[] = "Password does not match";
-        } else {
+    if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
+        $error[]='Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.';
+    } else {
+        $error[]= 'Strong password.';
+    }
+    
+    $cpassword = md5($_POST['cpassword']);
+    if ($password != $cpassword) {
+        $error[] = "Password does not match";
+    }
+    $sql = "select * from users where (userName='$name' || userEmail='$email');";
+
+    $res = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($res) > 0) {
+
+        $row = mysqli_fetch_assoc($res);
+    
+        if ($email == $row['userEmail']) {
+            $error[] = "Email already exists";
+        }
+        
+        if ($name == $row['userName']) {
+            $error[] = "Username already exists";
+        }
+    } else {
             $insert = "INSERT INTO users (userFirstName, userLastName, userEmail, userName, userPassw, userPhone) 
             VALUES('$fname','$lname','$email','$name','$password','$phone')";
             mysqli_query($conn, $insert);
             header('Location: login.php');
         }
-    }
+    
 };
 ?>
 <!DOCTYPE html>

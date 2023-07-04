@@ -147,7 +147,7 @@
 							<p class="card-text">Room: <strong><?php echo $row['roomName']; ?></strong></p>
 							<?php
 							if (isset($_SESSION['userId'])) {
-								echo '<a href="booking.php?scheduleID=' . $row['schedule_id'] . '" class="btn btn-primary">Book now</a>';
+								echo '<a href="../booking.php?scheduleID=' . $row['schedule_id'] . '" class="btn btn-primary">Book now</a>';
 							}
 							?>
 						</div>

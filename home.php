@@ -6,12 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="admin/assets/admin.css">
+    <link rel="stylesheet" href="assets/index.css">
     <title>Home </title>
     <style>
         .content {
             padding: 20px 0;
             display: flex;
             flex-wrap: wrap;
+            align-items: center;
             width: 33.3%;
             text-align: left;
             box-sizing: content-box;
@@ -20,6 +22,9 @@
 
 
 
+        }
+        .listing{
+            align-items: center;
         }
 
         .card-text {
@@ -31,12 +36,12 @@
 
 </head>
 
-<body>
+<body style="background-image: url('assets/images/backregister.jpg');">
     <?php
     include "db.php";
     require "header.php";
     ?>
-    <h2 style="color:aquamarine;">Now Showing</h2>
+    <h2 style="color:aquamarine;">Buy Your Tickets Now</h2>
     </div>
     <div class="content">
         <?php
