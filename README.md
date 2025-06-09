@@ -1,6 +1,7 @@
 # 🎬 Cinemagra - Cinema Seat Booking Website
 
-A PHP-based cinema booking system that allows users to register, book seats, and manage bookings via an admin panel.
+Cinemagra is a web-based seat booking system built using PHP, MySQL, HTML, and CSS. It allows users to register and log in, view available movie schedules, select seats, and make bookings. An admin panel is also included to manage bookings and users efficiently.
+
 
 ## 🌟 Features
 
@@ -22,6 +23,7 @@ Apache Server (via XAMPP, WAMP, or LAMP)
 
 Web browser (Chrome, Firefox, etc.)
 
+## 🚀 Getting Started
 1. Clone or Download the Project
 bash
 Copy
@@ -49,9 +51,7 @@ $conn = new mysqli('localhost', 'root', '', 'cinemadb') or die("Cannot connect t
 Start Apache and MySQL from your local server stack (e.g., XAMPP).
 Visit: http://localhost/cinemagra-main/index.php
 
-
-
-
+## 📁 Project Structure
 cinemagra-main/
 ├── index.php                 # Landing page
 ├── register.php              # User registration
@@ -67,7 +67,7 @@ cinemagra-main/
 ├── assets/                   # CSS and static files
 
 
-📌 Future Improvements
+## 📌 Future Improvements
 🎥 Add movie posters and trailers
 
 📧 Email verification & password reset links
@@ -78,6 +78,6 @@ cinemagra-main/
 
 📅 Seat availability by showtime
 
-🧑‍💻 Author
+## 🧑‍💻 Author
 Gracie Muthui
 Passionate about building practical and fun web project
